@@ -1,34 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
-            background-color: lightcoral;
+        .img {
+
+            height: 500px;
+            width: 500px;
+            margin: 20px;
+            margin-top: 50px;
+            border: 2px solid;
+        }
+
+        #gif-container {
             display: flex;
-            height: 90vh;
+            flex-wrap: wrap;
+            background-color: blueviolet;
             align-items: center;
             justify-content: center;
+
+
         }
     </style>
 </head>
-<body>
-    <img src="#" alt="cat">
 
+<body>
+    <div id="gif-container">
+        <img src="#" alt="iron man" class="img">
+        <img src="#" alt="iron man" class="img" id="img1">
+        <!-- <img src="#" alt="iron man" id="img3" class="img">
+  <img src="#" alt="iron man" id="img4" class="img"> 
+  <img src="#" alt="iron man" id="img5" class="img">
+  <img src="#" alt="iron man" id="img6" class="img"> -->
+    </div>
     <script>
-        const img = document.querySelector('img')
-  fetch('https://api.giphy.com/v1/gifs/translate?api_key=Gu85MpAz5E9Unye9bQoUIPpAkrb5zM1j&s=cats', {mode: 'cors'})
-    .then(function(response) {
-      return response.json()
-    })
-    .then(function(response) {
-      img.src = response.data.images.original.url
-    })
-    .catch(e => {
-      console.log(e)
-    }) 
+        const img = document.querySelector("img");
+        const img2 = document.getElementById("img2");
+
+        function getData() {
+            fetch(
+                "https://api.giphy.com/v1/gifs/translate?api_key=Gu85MpAz5E9Unye9bQoUIPpAkrb5zM1j&s=iron man",
+                { mode: "cors" }
+            )
+                .then((response) => {
+                    return response.json();
+                })
+                //.then((json) => console.log(json))
+                .then((response) => {
+                    img.src = response.data.images.original.url;
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+        }
+        fetch(
+            "https://api.giphy.com/v1/gifs/translate?api_key=Gu85MpAz5E9Unye9bQoUIPpAkrb5zM1j&s=cat",
+            { mode: "cors" }
+        )
+            .then((response) => {
+                return response.json();
+            })
+            //.then((json) => console.log(json))
+            .then((response) => {
+                img1.src = response.data.images.original.url;
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+
     </script>
 </body>
+
 </html>
