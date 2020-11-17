@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: lightcoral;
+            display: flex;
+            height: 90vh;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <img src="#" alt="cat">
+
+    <script>
+        const img = document.querySelector('img')
+  fetch('https://api.giphy.com/v1/gifs/translate?api_key=Gu85MpAz5E9Unye9bQoUIPpAkrb5zM1j&s=cats', {mode: 'cors'})
+    .then(function(response) {
+      return response.json()
+    })
+    .then(function(response) {
+      img.src = response.data.images.original.url
+    })
+    .catch(e => {
+      console.log(e)
+    }) 
+    </script>
+</body>
+</html>
